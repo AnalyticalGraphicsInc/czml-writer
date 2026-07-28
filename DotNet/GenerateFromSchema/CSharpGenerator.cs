@@ -98,17 +98,33 @@ public partial class CSharpGenerator(string? outputDirectory, string configurati
             $"{m_configuration.Namespace}.Advanced",
             "System",
             "JetBrains.Annotations",
+            .. m_configuration.UsingNamespaces,
+            .. GetNamespacesForPropertyOverloads(schema),
         ];
-
-        namespaces.AddRange(m_configuration.UsingNamespaces);
-        namespaces.AddRange(schema.AllProperties
-                                  .SelectMany(property => GetOverloadsForProperty(property).Concat(property.ValueType.Properties.SelectMany(GetOverloadsForProperty)))
-                                  .SelectMany(overload => overload.UsingNamespaces));
 
         foreach (string ns in namespaces.Distinct())
         {
             writer.WriteLine("using {0};", ns);
         }
+    }
+
+    IEnumerable<string> GetNamespacesForPropertyOverloads(Schema schema)
+    {
+        IEnumerable<OverloadInfo> GetOverloads(Property property)
+        {
+            return
+            [
+                .. GetOverloadsForProperty(property),
+                .. from valueTypeProperty in property.ValueType.Properties
+                   from overload in GetOverloadsForProperty(valueTypeProperty)
+                   select overload,
+            ];
+        }
+
+        return from property in schema.AllProperties
+               from overload in GetOverloads(property)
+               from ns in overload.UsingNamespaces
+               select ns;
     }
 
     private static void WriteSummaryText(CodeWriter writer, string text)
@@ -164,7 +180,7 @@ public partial class CSharpGenerator(string? outputDirectory, string configurati
 
     private void WritePropertyLazyFields(CodeWriter writer, Schema schema)
     {
-        foreach (Property property in schema.AllProperties)
+        foreach (var property in schema.AllProperties)
         {
             if (PropertyValueIsLeaf(property))
             {
@@ -225,7 +241,7 @@ public partial class CSharpGenerator(string? outputDirectory, string configurati
     {
         bool isFirstValueProperty = true;
 
-        foreach (Property property in schema.AllProperties)
+        foreach (var property in schema.AllProperties)
         {
             if (PropertyValueIsLeaf(property))
             {
@@ -435,7 +451,7 @@ public partial class CSharpGenerator(string? outputDirectory, string configurati
 
     private void WriteAsTypeLazyInitialization(CodeWriter writer, Schema schema)
     {
-        foreach (Property property in schema.AllProperties)
+        foreach (var property in schema.AllProperties)
         {
             if (!property.IsValue)
                 continue;
@@ -553,7 +569,7 @@ public partial class CSharpGenerator(string? outputDirectory, string configurati
         {
             string defaultText = defaultValue switch
             {
-                _ when defaultValue.TryGetValue(out bool boolValue) => $"<see langword=\"{(boolValue ? "true" : "false")}\"/>",
+                _ when defaultValue.TryGetValue(out bool boolValue) => $"""<see langword="{(boolValue ? "true" : "false")}"/>""",
                 _ when defaultValue.TryGetValue(out int intValue) => intValue.ToString(CultureInfo.InvariantCulture),
                 _ when defaultValue.TryGetValue(out double doubleValue) => doubleValue.ToString("0.0###############", CultureInfo.InvariantCulture),
                 _ => defaultValue.GetValue<string>(),

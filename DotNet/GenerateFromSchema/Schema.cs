@@ -31,7 +31,7 @@ public class Schema
     /// <summary>
     /// All properties to be generated, including those properties defined by mixins.
     /// </summary>
-    public List<Property> AllProperties => Properties.Concat(Mixins.SelectMany(schema => schema.Properties)).ToList();
+    public List<Property> AllProperties => [.. Properties, .. Mixins.SelectMany(schema => schema.Properties)];
 
     private const string InterpolatableProperty = "InterpolatableProperty";
     public const string SchemaFromTypeName = "<Schema from Type>";
