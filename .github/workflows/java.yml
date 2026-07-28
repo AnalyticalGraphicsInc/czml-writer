@@ -10,7 +10,7 @@ jobs:
       checks: write
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
@@ -21,18 +21,20 @@ jobs:
         distribution: 'temurin'
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v4.4.2
+      uses: gittools/actions/gitversion/setup@v4.7.0
       with:
         versionSpec: '6.x'
 
     - name: Execute GitVersion
-      uses: gittools/actions/gitversion/execute@v4.4.2
+      uses: gittools/actions/gitversion/execute@v4.7.0
 
     - name: Set Gradle Version
       run: sed -i 's/^version = .*$/version = ${{ env.GitVersion_MajorMinorPatch }}/g' Java/gradle.properties
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v5
+      uses: gradle/actions/setup-gradle@v6
+      with:
+        cache-provider: basic
 
     - name: Build
       run: ./Java/gradlew -p Java assemble

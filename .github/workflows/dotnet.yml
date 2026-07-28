@@ -10,12 +10,12 @@ jobs:
       checks: write
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
 
@@ -23,12 +23,12 @@ jobs:
       uses: microsoft/setup-msbuild@v3
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v4.4.2
+      uses: gittools/actions/gitversion/setup@v4.7.0
       with:
         versionSpec: '6.x'
 
     - name: Execute GitVersion
-      uses: gittools/actions/gitversion/execute@v4.4.2
+      uses: gittools/actions/gitversion/execute@v4.7.0
       with:
         targetPath: DotNet
         updateProjectFiles: true
