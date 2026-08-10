@@ -86,6 +86,36 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        public void TestMinimumRadius()
+        {
+            const double expected = 123.0;
+
+            using (var packet = OpenPacket())
+            using (var sensor = packet.OpenConicSensorProperty())
+            using (var interval = sensor.OpenInterval())
+            {
+                interval.WriteMinimumRadiusProperty(expected);
+            }
+
+            AssertPropertyJson(ConicSensorCesiumWriter.MinimumRadiusPropertyName, expected);
+        }
+
+        [Test]
+        public void TestMaximumRadius()
+        {
+            const double expected = 234.0;
+
+            using (var packet = OpenPacket())
+            using (var sensor = packet.OpenConicSensorProperty())
+            using (var interval = sensor.OpenInterval())
+            {
+                interval.WriteMaximumRadiusProperty(expected);
+            }
+
+            AssertPropertyJson(ConicSensorCesiumWriter.MaximumRadiusPropertyName, expected);
+        }
+
+        [Test]
         public void TestRadius()
         {
             const double expected = 150.0;

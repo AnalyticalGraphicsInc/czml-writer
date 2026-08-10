@@ -41,6 +41,16 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     @Nonnull
     public static final String YHalfAnglePropertyName = "yHalfAngle";
     /**
+    * The name of the {@code minimumRadius} property.
+    */
+    @Nonnull
+    public static final String MinimumRadiusPropertyName = "minimumRadius";
+    /**
+    * The name of the {@code maximumRadius} property.
+    */
+    @Nonnull
+    public static final String MaximumRadiusPropertyName = "maximumRadius";
+    /**
     * The name of the {@code radius} property.
     */
     @Nonnull
@@ -171,6 +181,14 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     @Nonnull
     private final Lazy<DoubleCesiumWriter> m_yHalfAngle = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
         return new DoubleCesiumWriter(YHalfAnglePropertyName);
+    }), false);
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_minimumRadius = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(MinimumRadiusPropertyName);
+    }), false);
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_maximumRadius = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(MaximumRadiusPropertyName);
     }), false);
     @Nonnull
     private final Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
@@ -569,7 +587,207 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Gets the writer for the {@code radius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Gets the writer for the {@code minimumRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumRadius} property defines the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMinimumRadiusWriter() {
+        return m_minimumRadius.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code minimumRadius} property. The {@code minimumRadius} property defines the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMinimumRadiusProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMinimumRadiusWriter());
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code number} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param value The value.
+    */
+    public final void writeMinimumRadiusProperty(double value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code number} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMinimumRadiusProperty(List<JulianDate> dates, List<Double> values) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code number} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMinimumRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code reference} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param value The reference.
+    */
+    public final void writeMinimumRadiusPropertyReference(Reference value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code reference} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param value The reference.
+    */
+    public final void writeMinimumRadiusPropertyReference(String value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code reference} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMinimumRadiusPropertyReference(String identifier, String propertyName) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code minimumRadius} property as a {@code reference} value. The {@code minimumRadius} property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMinimumRadiusPropertyReference(String identifier, String[] propertyNames) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMinimumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code maximumRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumRadius} property defines the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMaximumRadiusWriter() {
+        return m_maximumRadius.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code maximumRadius} property. The {@code maximumRadius} property defines the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMaximumRadiusProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMaximumRadiusWriter());
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code number} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param value The value.
+    */
+    public final void writeMaximumRadiusProperty(double value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code number} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMaximumRadiusProperty(List<JulianDate> dates, List<Double> values) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code number} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMaximumRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code reference} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param value The reference.
+    */
+    public final void writeMaximumRadiusPropertyReference(Reference value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code reference} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param value The reference.
+    */
+    public final void writeMaximumRadiusPropertyReference(String value) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code reference} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMaximumRadiusPropertyReference(String identifier, String propertyName) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code maximumRadius} property as a {@code reference} value. The {@code maximumRadius} property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMaximumRadiusPropertyReference(String identifier, String[] propertyNames) {
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code radius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radius} property defines the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     */
     @Nonnull
     public final DoubleCesiumWriter getRadiusWriter() {
@@ -577,7 +795,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Opens and returns the writer for the {@code radius} property. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Opens and returns the writer for the {@code radius} property. The {@code radius} property defines the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     */
     @Nonnull
     public final DoubleCesiumWriter openRadiusProperty() {
@@ -586,7 +804,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param value The value.
     */
     public final void writeRadiusProperty(double value) {
@@ -597,7 +815,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -609,7 +827,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -623,7 +841,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(Reference value) {
@@ -634,7 +852,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
@@ -645,7 +863,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -657,7 +875,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

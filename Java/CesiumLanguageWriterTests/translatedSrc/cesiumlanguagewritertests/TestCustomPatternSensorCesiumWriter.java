@@ -64,6 +64,38 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
     }
 
     @Test
+    public final void testMinimumRadius() {
+        final double expected = 100.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter sensor = using$1.resource;
+                try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(sensor.openInterval())) {
+                    final CustomPatternSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMinimumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(CustomPatternSensorCesiumWriter.MinimumRadiusPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaximumRadius() {
+        final double expected = 200.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter sensor = using$1.resource;
+                try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(sensor.openInterval())) {
+                    final CustomPatternSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMaximumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(CustomPatternSensorCesiumWriter.MaximumRadiusPropertyName, expected);
+    }
+
+    @Test
     public final void testRadius() {
         final double expected = 1234.5;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {

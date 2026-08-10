@@ -35,6 +35,18 @@ namespace CesiumLanguageWriter
         public const string YHalfAnglePropertyName = "yHalfAngle";
 
         /// <summary>
+        /// The name of the <c>minimumRadius</c> property.
+        /// </summary>
+        [NotNull]
+        public const string MinimumRadiusPropertyName = "minimumRadius";
+
+        /// <summary>
+        /// The name of the <c>maximumRadius</c> property.
+        /// </summary>
+        [NotNull]
+        public const string MaximumRadiusPropertyName = "maximumRadius";
+
+        /// <summary>
         /// The name of the <c>radius</c> property.
         /// </summary>
         [NotNull]
@@ -187,6 +199,12 @@ namespace CesiumLanguageWriter
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_yHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(YHalfAnglePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<DoubleCesiumWriter> m_minimumRadius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumRadiusPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<DoubleCesiumWriter> m_maximumRadius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumRadiusPropertyName), false);
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
@@ -584,7 +602,225 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>radius</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>radius</c> property defines the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Gets the writer for the <c>minimumRadius</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>minimumRadius</c> property defines the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter MinimumRadiusWriter
+        {
+            get { return m_minimumRadius.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>minimumRadius</c> property. The <c>minimumRadius</c> property defines the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter OpenMinimumRadiusProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MinimumRadiusWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>number</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteMinimumRadiusProperty(double value)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>number</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteMinimumRadiusProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>number</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteMinimumRadiusProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>reference</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMinimumRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>reference</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMinimumRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>reference</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMinimumRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>minimumRadius</c> property as a <c>reference</c> value. The <c>minimumRadius</c> property specifies the minimum radial limit of the sensor. If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMinimumRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMinimumRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>maximumRadius</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>maximumRadius</c> property defines the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter MaximumRadiusWriter
+        {
+            get { return m_maximumRadius.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>maximumRadius</c> property. The <c>maximumRadius</c> property defines the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter OpenMaximumRadiusProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaximumRadiusWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>number</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteMaximumRadiusProperty(double value)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>number</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteMaximumRadiusProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>number</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteMaximumRadiusProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>reference</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaximumRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>reference</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaximumRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>reference</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaximumRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>maximumRadius</c> property as a <c>reference</c> value. The <c>maximumRadius</c> property specifies the maximum radial limit of the sensor. If not specified, the default value is Infinity.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaximumRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaximumRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>radius</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>radius</c> property defines the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter RadiusWriter
@@ -593,7 +829,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>radius</c> property. The <c>radius</c> property defines the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Opens and returns the writer for the <c>radius</c> property. The <c>radius</c> property defines the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenRadiusProperty()
@@ -603,7 +839,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRadiusProperty(double value)
@@ -615,7 +851,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -628,7 +864,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -643,7 +879,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(Reference value)
@@ -655,7 +891,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(string value)
@@ -667,7 +903,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -680,7 +916,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the maximum radial limit of the sensor. Prefer specifying "maximumRadius" instead. If not specified, the default value is Infinity.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
