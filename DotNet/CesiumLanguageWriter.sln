@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.7.11925.98 stable
+VisualStudioVersion = 18.7.11925.98
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -145,6 +145,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AGI", "AGI", "{CF5572F1-2FF
 		..\Schema\Extensions\AGI\ConicSensor.json = ..\Schema\Extensions\AGI\ConicSensor.json
 		..\Schema\Extensions\AGI\CustomPatternSensor.json = ..\Schema\Extensions\AGI\CustomPatternSensor.json
 		..\Schema\Extensions\AGI\Fan.json = ..\Schema\Extensions\AGI\Fan.json
+		..\Schema\Extensions\AGI\GroundElevationVolume.json = ..\Schema\Extensions\AGI\GroundElevationVolume.json
 		..\Schema\Extensions\AGI\RectangularSensor.json = ..\Schema\Extensions\AGI\RectangularSensor.json
 		..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.json = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.json
 		..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.json = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.json

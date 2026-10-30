@@ -1591,7 +1591,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Gets the writer for the {@code showEnvironmentOcclusion} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Gets the writer for the {@code showEnvironmentOcclusion} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentOcclusionWriter() {
@@ -1599,7 +1599,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Opens and returns the writer for the {@code showEnvironmentOcclusion} property. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Opens and returns the writer for the {@code showEnvironmentOcclusion} property. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentOcclusionProperty() {
@@ -1608,7 +1608,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeShowEnvironmentOcclusionProperty(boolean value) {
@@ -1619,7 +1619,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(Reference value) {
@@ -1630,7 +1630,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
@@ -1641,7 +1641,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1653,7 +1653,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

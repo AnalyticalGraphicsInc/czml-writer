@@ -41,7 +41,7 @@ public final class BitmapHelper {
         }
 
         if (image == null) {
-            throw new ArgumentException("Unable to create image from stream.");
+            return ArgumentException._throw("Unable to create image from stream.");
         }
 
         return image;

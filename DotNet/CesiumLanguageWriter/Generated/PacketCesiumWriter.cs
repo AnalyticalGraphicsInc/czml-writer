@@ -203,6 +203,12 @@ namespace CesiumLanguageWriter
         public const string RectangularSensorPropertyName = "agi_rectangularSensor";
 
         /// <summary>
+        /// The name of the <c>agi_groundElevationVolume</c> property.
+        /// </summary>
+        [NotNull]
+        public const string GroundElevationVolumePropertyName = "agi_groundElevationVolume";
+
+        /// <summary>
         /// The name of the <c>agi_fan</c> property.
         /// </summary>
         [NotNull]
@@ -289,6 +295,9 @@ namespace CesiumLanguageWriter
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(() => new RectangularSensorCesiumWriter(RectangularSensorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<GroundElevationVolumeCesiumWriter> m_agi_groundElevationVolume = new Lazy<GroundElevationVolumeCesiumWriter>(() => new GroundElevationVolumeCesiumWriter(GroundElevationVolumePropertyName), false);
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(() => new FanCesiumWriter(FanPropertyName), false);
@@ -1349,6 +1358,24 @@ namespace CesiumLanguageWriter
         public RectangularSensorCesiumWriter OpenRectangularSensorProperty()
         {
             return OpenAndReturn(RectangularSensorWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>agi_groundElevationVolume</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>agi_groundElevationVolume</c> property defines a volume defined by maximum and minimum ground elevation angles.
+        /// </summary>
+        [NotNull]
+        public GroundElevationVolumeCesiumWriter GroundElevationVolumeWriter
+        {
+            get { return m_agi_groundElevationVolume.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>agi_groundElevationVolume</c> property. The <c>agi_groundElevationVolume</c> property defines a volume defined by maximum and minimum ground elevation angles.
+        /// </summary>
+        [NotNull]
+        public GroundElevationVolumeCesiumWriter OpenGroundElevationVolumeProperty()
+        {
+            return OpenAndReturn(GroundElevationVolumeWriter);
         }
 
         /// <summary>

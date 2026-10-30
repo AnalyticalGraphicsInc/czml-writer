@@ -1,12 +1,16 @@
 package agi.foundation.compatibility;
 
-import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
-import static java.lang.Byte.toUnsignedInt;
-
 import agi.foundation.compatibility.annotations.Internal;
 
+import static agi.foundation.compatibility.ArgumentException.assertValidSubset;
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.ArgumentOutOfRangeException.assertNonNegative;
+import static java.lang.Byte.toUnsignedInt;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UncheckedIOException;
 import java.util.Arrays;
 
 import javax.annotation.Nonnull;
@@ -46,6 +50,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            The initial size of the internal array in bytes.
      */
     public MemoryStream(int capacity) {
+        assertNonNegative(capacity, "capacity", "Capacity must be positive.");
         this.buffer = new byte[capacity];
 
         this.capacity = capacity;
@@ -143,6 +148,9 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      */
     public MemoryStream(@Nonnull byte[] buffer, int index, int count, boolean writable, boolean publiclyVisible) {
         assertNonNull(buffer, "buffer");
+        assertNonNegative(index, "index");
+        assertNonNegative(count, "count");
+        assertValidSubset(buffer.length, index, count);
 
         this.buffer = buffer;
 
@@ -192,6 +200,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     @Override
     public synchronized int read(byte[] b, int off, int len) {
+        validateBufferArguments(b, off, len);
         if (len == 0)
             return 0;
         if (position >= length)
@@ -228,6 +237,19 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     }
 
     /**
+     * Writes the stream contents to a byte array, regardless of the current position.
+     *
+     * @return A new byte array.
+     */
+    @Nonnull
+    public byte[] toArray() {
+        int resultLength = length - origin;
+        byte[] result = new byte[resultLength];
+        System.arraycopy(buffer, origin, result, 0, resultLength);
+        return result;
+    }
+
+    /**
      * Gets the number of bytes allocated for this stream.
      *
      * @return The length of the usable portion of the buffer for the stream.
@@ -243,6 +265,9 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            The new length of the usable portion of the buffer for the stream.
      */
     public void setCapacity(int value) {
+        if (value < getLength())
+            ArgumentOutOfRangeException._throw("value", "Capacity was less than the current size.");
+
         if (!expandable && value != getCapacity())
             throw new UnsupportedOperationException("Cannot expand this MemoryStream");
 
@@ -272,12 +297,16 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      */
     @Override
     public void setLength(long value) {
-        if (value < 0)
-            throw new ArgumentOutOfRangeException("value", "Stream length must be non-negative.");
+        assertNonNegative(value, "value", "Stream length must be non-negative.");
+        int intValue = assertValidInteger(value, "value");
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
 
-        int newLength = (int) value + origin;
+        long longLength = intValue + (long) origin;
+        if (longLength > Integer.MAX_VALUE)
+            throw new UncheckedIOException(new IOException("Stream was too long."));
+
+        int newLength = (int) longLength;
         boolean newArray = expand(newLength);
         if (!newArray && newLength > length) {
             clearBuffer(length, newLength);
@@ -306,7 +335,8 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      */
     @Override
     public void setPosition(long value) {
-        position = origin + (int) value;
+        assertNonNegative(value, "value");
+        position = origin + assertValidInteger(value, "value");
     }
 
     /**
@@ -320,22 +350,10 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @return The new position within the stream, calculated by combining the initial
      *         reference point and the offset.
      */
-    public long seek(long offset, SeekOrigin loc) {
-        position = getReference(loc) + (int) offset;
+    public long seek(long offset, @Nonnull SeekOrigin loc) {
+        long newPosition = StreamHelper.calculateSeekPosition(this, offset, loc);
+        position = origin + assertValidInteger(newPosition, "offset");
         return position;
-    }
-
-    private int getReference(SeekOrigin loc) {
-        switch (loc) {
-        case BEGIN:
-            return origin;
-        case CURRENT:
-            return position;
-        case END:
-            return length;
-        default:
-            throw new ArgumentException("Invalid SeekOrigin", "loc");
-        }
     }
 
     /**
@@ -350,8 +368,12 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            The maximum number of bytes to write.
      */
     public void write(byte[] buffer, int offset, int count) {
+        validateBufferArguments(buffer, offset, count);
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
+
+        if (position > Integer.MAX_VALUE - count)
+            throw new UncheckedIOException(new IOException("Stream was too long."));
 
         int newPosition = position + count;
         if (newPosition > length) {
@@ -386,6 +408,19 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     private void clearBuffer(int from, int to) {
         Arrays.fill(buffer, from, to, TypeHelper.DEFAULT_BYTE);
+    }
+
+    private static void validateBufferArguments(byte[] buffer, int offset, int count) {
+        assertNonNull(buffer, "buffer", "Buffer cannot be null.");
+        assertNonNegative(offset, "offset");
+        assertNonNegative(count, "count");
+        assertValidSubset(buffer.length, offset, count);
+    }
+
+    private static int assertValidInteger(long value, @Nonnull String paramName) {
+        if (value > Integer.MAX_VALUE)
+            ArgumentOutOfRangeException._throw(paramName, "Stream length must be non-negative and less than 2^31 - 1 - origin.");
+        return (int) value;
     }
 
     private boolean expand(int newLength) {

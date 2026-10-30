@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.copySign;
 import static java.lang.Math.rint;
 
 import javax.annotation.Nonnull;
@@ -50,7 +51,7 @@ public final class MathHelper {
      */
     public static double round(double value, int digits, @Nonnull MidpointRounding mode) {
         if (digits < 0 || digits > 15)
-            throw new ArgumentOutOfRangeException("digits", "Rounding digits must be between 0 and 15, inclusive.");
+            ArgumentOutOfRangeException._throw("digits", "Rounding digits must be between 0 and 15, inclusive.");
 
         // This is the .NET algorithm, which is faster, but less precise than BigDecimal
         if (abs(value) >= roundingLimit) {
@@ -59,41 +60,49 @@ public final class MathHelper {
 
         double powerOfTen = powerOfTenCache[digits];
         value *= powerOfTen;
-        switch (mode) {
-        case TO_EVEN:
+
+        // if/else with two cases produces smaller bytecode than a switch.
+        if (mode == MidpointRounding.TO_EVEN) {
             value = rint(value);
-            break;
-        case AWAY_FROM_ZERO:
-            double fractionPart = value % 1.0;
-            value = value - fractionPart;
-            if (abs(fractionPart) >= 0.5) {
-                value += Math.signum(fractionPart);
-            }
-            break;
-        default:
-            throw new IllegalArgumentException();
+        } else if (mode == MidpointRounding.AWAY_FROM_ZERO) {
+            value = truncate(value + copySign(1.0 / 2.0, value));
+        } else {
+            ArgumentOutOfRangeException._throw();
         }
 
         return value / powerOfTen;
     }
 
     private static final double roundingLimit = 1e16;
+    @Nonnull
     private static final double[] powerOfTenCache = {
-            1e0,
-            1e1,
-            1e2,
-            1e3,
-            1e4,
-            1e5,
-            1e6,
-            1e7,
-            1e8,
-            1e9,
-            1e10,
-            1e11,
-            1e12,
-            1e13,
-            1e14,
-            1e15,
+        1e0,
+        1e1,
+        1e2,
+        1e3,
+        1e4,
+        1e5,
+        1e6,
+        1e7,
+        1e8,
+        1e9,
+        1e10,
+        1e11,
+        1e12,
+        1e13,
+        1e14,
+        1e15,
     };
+
+    /**
+     * Calculates the integral part of a specified double-precision floating-point number.
+     *
+     * @param value
+     *            A number to truncate.
+     * @return The integral part of d; that is, the number that remains after any
+     *         fractional digits have been discarded.
+     */
+    public static double truncate(double value) {
+        return value > 0.0 ? Math.floor(value) : Math.ceil(value);
+    }
 }

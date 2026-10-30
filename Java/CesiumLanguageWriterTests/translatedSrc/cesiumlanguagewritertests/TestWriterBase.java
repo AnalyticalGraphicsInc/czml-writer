@@ -99,18 +99,18 @@ public abstract class TestWriterBase {
     private static String formatValue(@Nonnull Object value) {
         if (value instanceof Boolean) {
             // by default, .NET uses "True" and "False" but we need lowercase.
-            return (Boolean) value ? "true" : "false";
+            return (boolean) value ? "true" : "false";
         }
         if (value instanceof Duration) {
             Duration duration = (Duration) value;
             value = duration.getTotalSeconds();
         }
         if (value instanceof Integer) {
-            int i = (Integer) value;
+            int i = (int) value;
             return IntHelper.toString(i, CultureInfoHelper.getInvariantCulture());
         }
         if (value instanceof Double) {
-            double d = (Double) value;
+            double d = (double) value;
             return DoubleHelper.toString(d, CultureInfoHelper.getInvariantCulture());
         }
         if (value instanceof CesiumStripeOrientation) {

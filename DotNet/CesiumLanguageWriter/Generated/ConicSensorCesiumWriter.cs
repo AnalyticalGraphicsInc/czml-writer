@@ -2096,7 +2096,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>showEnvironmentOcclusion</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>showEnvironmentOcclusion</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter ShowEnvironmentOcclusionWriter
@@ -2105,7 +2105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>showEnvironmentOcclusion</c> property. The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>showEnvironmentOcclusion</c> property. The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenShowEnvironmentOcclusionProperty()
@@ -2115,7 +2115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>boolean</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>boolean</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowEnvironmentOcclusionProperty(bool value)
@@ -2127,7 +2127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentOcclusionPropertyReference(Reference value)
@@ -2139,7 +2139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentOcclusionPropertyReference(string value)
@@ -2151,7 +2151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -2164,7 +2164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the sensor occluded by the environment will be drawn with the environmentOcclusionMaterial. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

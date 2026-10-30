@@ -20,7 +20,7 @@ public final class TypeHelper {
      * This method expects that the class must exist.
      */
     @Nonnull
-    static Class<?> classForName(String className) {
+    static Class<?> classForName(@Nonnull String className) {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {

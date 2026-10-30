@@ -2,12 +2,15 @@ package agi.foundation.compatibility;
 
 import static java.lang.System.lineSeparator;
 
+import javax.annotation.Nonnull;
+
 /**
  * The exception that is thrown when the value of an argument is outside the allowable
  * range of values as defined by the invoked method.
  */
 public class ArgumentOutOfRangeException extends ArgumentException {
     private static final long serialVersionUID = 6879363115706763498L;
+    @Nonnull
     private static final String DEFAULT_MESSAGE = "Specified argument was out of the range of valid values.";
     private final Object actualValue;
 
@@ -94,8 +97,53 @@ public class ArgumentOutOfRangeException extends ArgumentException {
         return actualValue;
     }
 
-    static void assertNonNegative(int value, String paramName) {
+    static void assertNonNegative(int value, @Nonnull String paramName) {
+        assertNonNegative(value, paramName, "Non-negative number required.");
+    }
+
+    static void assertNonNegative(int value, @Nonnull String paramName, @Nonnull String message) {
         if (value < 0)
-            throw new ArgumentOutOfRangeException(paramName, "Non-negative number required.");
+            ArgumentOutOfRangeException._throw(paramName, message);
+    }
+
+    static void assertNonNegative(long value, @Nonnull String paramName) {
+        assertNonNegative(value, paramName, "Non-negative number required.");
+    }
+
+    static void assertNonNegative(long value, @Nonnull String paramName, @Nonnull String message) {
+        if (value < 0)
+            ArgumentOutOfRangeException._throw(paramName, message);
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentOutOfRangeException}.
+     */
+    @Nonnull
+    public static <T> T _throw() {
+        throw new ArgumentOutOfRangeException();
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentOutOfRangeException}.
+     *
+     * @param paramName
+     *            The name of the parameter that causes this exception.
+     */
+    @Nonnull
+    public static <T> T _throw(@Nonnull String paramName) {
+        throw new ArgumentOutOfRangeException(paramName);
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentOutOfRangeException}.
+     *
+     * @param paramName
+     *            The name of the parameter that caused the exception.
+     * @param message
+     *            The message that describes the error.
+     */
+    @Nonnull
+    public static <T> T _throw(@Nonnull String paramName, String message) {
+        throw new ArgumentOutOfRangeException(paramName, message);
     }
 }

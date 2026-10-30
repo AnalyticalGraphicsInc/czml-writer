@@ -1,11 +1,14 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * The exception that is thrown when a null reference is passed to a method that does not
  * accept it as a valid argument.
  */
 public class ArgumentNullException extends ArgumentException {
     private static final long serialVersionUID = 3515157804741239199L;
+    @Nonnull
     private static final String DEFAULT_MESSAGE = "Value cannot be null.";
 
     /**
@@ -68,6 +71,40 @@ public class ArgumentNullException extends ArgumentException {
      */
     public static <T> void assertNonNull(T value, String paramName) {
         if (value == null)
-            throw new ArgumentNullException(paramName);
+            _throw(paramName);
+    }
+
+    /**
+     * Checks that the specified object reference is not {@code null} and throws an
+     * {@link ArgumentNullException} with the specified parameter name and message if it
+     * is.
+     */
+    public static <T> void assertNonNull(T value, String paramName, String message) {
+        if (value == null)
+            _throw(paramName, message);
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentNullException}.
+     *
+     * @param paramName
+     *            The name of the parameter that caused the exception.
+     */
+    @Nonnull
+    public static <T> T _throw(String paramName) {
+        throw new ArgumentNullException(paramName);
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentNullException}.
+     *
+     * @param paramName
+     *            The name of the parameter that caused the exception.
+     * @param message
+     *            A message that describes the error.
+     */
+    @Nonnull
+    public static <T> T _throw(String paramName, String message) {
+        throw new ArgumentNullException(paramName, message);
     }
 }

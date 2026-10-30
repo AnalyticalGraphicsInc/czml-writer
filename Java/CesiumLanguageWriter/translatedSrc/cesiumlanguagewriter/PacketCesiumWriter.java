@@ -17,6 +17,7 @@ import cesiumlanguagewriter.CylinderCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
 import cesiumlanguagewriter.FanCesiumWriter;
+import cesiumlanguagewriter.GroundElevationVolumeCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.ModelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
@@ -201,6 +202,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     public static final String RectangularSensorPropertyName = "agi_rectangularSensor";
     /**
+    * The name of the {@code agi_groundElevationVolume} property.
+    */
+    @Nonnull
+    public static final String GroundElevationVolumePropertyName = "agi_groundElevationVolume";
+    /**
     * The name of the {@code agi_fan} property.
     */
     @Nonnull
@@ -309,6 +315,10 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     private final Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(Func1.<RectangularSensorCesiumWriter> of(() -> {
         return new RectangularSensorCesiumWriter(RectangularSensorPropertyName);
+    }), false);
+    @Nonnull
+    private final Lazy<GroundElevationVolumeCesiumWriter> m_agi_groundElevationVolume = new Lazy<GroundElevationVolumeCesiumWriter>(Func1.<GroundElevationVolumeCesiumWriter> of(() -> {
+        return new GroundElevationVolumeCesiumWriter(GroundElevationVolumePropertyName);
     }), false);
     @Nonnull
     private final Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(Func1.<FanCesiumWriter> of(() -> {
@@ -1275,6 +1285,22 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     public final RectangularSensorCesiumWriter openRectangularSensorProperty() {
         return this.<RectangularSensorCesiumWriter> openAndReturn(getRectangularSensorWriter());
+    }
+
+    /**
+    * Gets the writer for the {@code agi_groundElevationVolume} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code agi_groundElevationVolume} property defines a volume defined by maximum and minimum ground elevation angles.
+    */
+    @Nonnull
+    public final GroundElevationVolumeCesiumWriter getGroundElevationVolumeWriter() {
+        return m_agi_groundElevationVolume.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code agi_groundElevationVolume} property. The {@code agi_groundElevationVolume} property defines a volume defined by maximum and minimum ground elevation angles.
+    */
+    @Nonnull
+    public final GroundElevationVolumeCesiumWriter openGroundElevationVolumeProperty() {
+        return this.<GroundElevationVolumeCesiumWriter> openAndReturn(getGroundElevationVolumeWriter());
     }
 
     /**

@@ -33,6 +33,8 @@ package agi.foundation.compatibility;
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Collection;
@@ -77,18 +79,14 @@ public class LinkedList<E> implements Collection<E> {
     }
 
     private void verifyReferencedNode(LinkedListNode<E> node) {
-        if (node == null) {
-            throw new ArgumentNullException("node");
-        }
+        assertNonNull(node, "node");
         if (node.getList() != this) {
             throw new IllegalStateException("node is not in the current LinkedList");
         }
     }
 
     private static <T> void verifyBlankNode(LinkedListNode<T> newNode) {
-        if (newNode == null) {
-            throw new ArgumentNullException("newNode");
-        }
+        assertNonNull(newNode, "newNode");
         if (newNode.getList() != null) {
             throw new IllegalStateException("newNode belongs to another LinkedList");
         }
