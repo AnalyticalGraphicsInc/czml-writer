@@ -69,6 +69,7 @@ public class Assembly {
                 }
             }
 
+            @Nonnull
             String className = stackTrace[index + stackTraceOffset].getClassName();
             @Nonnull
             Class<?> c = TypeHelper.classForName(className);

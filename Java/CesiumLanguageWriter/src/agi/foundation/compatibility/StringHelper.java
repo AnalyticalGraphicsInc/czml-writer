@@ -9,9 +9,6 @@ import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
-import java.util.Scanner;
-import java.util.regex.MatchResult;
-import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -182,8 +179,7 @@ public final class StringHelper {
     public static String[] split(@Nonnull String s, @Nullable char[] separator, int count, @Nonnull StringSplitOptions options) {
         assertNonNull(s, "s");
         assertNonNull(options, "options");
-        if (count < 0)
-            throw new ArgumentOutOfRangeException("count");
+        assertNonNegative(count, "count");
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         if (count == 0 || removeEmptyEntries && s.length() == 0)
@@ -282,14 +278,12 @@ public final class StringHelper {
     @Nonnull
     public static String remove(String s, int startIndex, int count) {
         assertNonNull(s, "s");
-        if (startIndex < 0)
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
-        if (count < 0)
-            throw new ArgumentOutOfRangeException("count", "count cannot be less than zero.");
+        assertNonNegative(startIndex, "startIndex", "startIndex cannot be less than zero.");
+        assertNonNegative(count, "count", "count cannot be less than zero.");
 
         int strLength = s.length();
         if (startIndex > strLength - count)
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string minus count.");
+            ArgumentOutOfRangeException._throw("startIndex", "startIndex must be less than length of string minus count.");
 
         StringBuilder result = new StringBuilder(strLength - count);
         result.append(s, 0, startIndex);
@@ -378,10 +372,11 @@ public final class StringHelper {
         case ORDINAL:
             return false;
         default:
-            throw new ArgumentException("Unknown comparisonType");
+            throw new ArgumentOutOfRangeException();
         }
     }
 
+    @Nonnull
     private static Locale getLocale(@Nonnull StringComparison comparisonType) {
         switch (comparisonType) {
         case INVARIANT_CULTURE:
@@ -393,7 +388,7 @@ public final class StringHelper {
         case CURRENT_CULTURE_IGNORE_CASE:
             return CultureInfoHelper.getCurrentCulture();
         default:
-            throw new ArgumentException("Unknown comparisonType");
+            throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -685,7 +680,7 @@ public final class StringHelper {
                 }
                 formattedItem = FormatHelper.buildFormat(locale, format).format(arg);
             } else {
-                formattedItem = arg == null ? empty : arg.toString();
+                formattedItem = nullToEmpty(arg);
             }
 
             int numPaddingChars = alignment - formattedItem.length();
@@ -730,7 +725,7 @@ public final class StringHelper {
         }
 
         private static void throwInvalidFormatString() {
-            throw new ArgumentException("Invalid format string");
+            ArgumentException._throw("Invalid format string");
         }
 
         private static boolean isAsciiDigit(char c) {
@@ -848,10 +843,9 @@ public final class StringHelper {
     public static int indexOf(@Nonnull String s, @Nonnull String value, int startIndex, @Nonnull StringComparison comparisonType) {
         assertNonNull(s, "s");
         assertNonNull(value, "value");
-        if (startIndex < 0)
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+        assertNonNegative(startIndex, "startIndex", "startIndex cannot be less than zero.");
         if (startIndex > s.length())
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string.");
+            ArgumentOutOfRangeException._throw("startIndex", "startIndex must be less than length of string.");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -912,19 +906,17 @@ public final class StringHelper {
     @Nonnull
     public static String substring(@Nonnull String s, int startIndex, int length) {
         assertNonNull(s, "s");
-        if (startIndex < 0)
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+        assertNonNegative(startIndex, "startIndex", "startIndex cannot be less than zero.");
 
         int strLen = s.length();
         if (startIndex > strLen)
-            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be larger than length of string.");
+            ArgumentOutOfRangeException._throw("startIndex", "startIndex cannot be larger than length of string.");
 
-        if (length < 0)
-            throw new ArgumentOutOfRangeException("length", "Length cannot be less than zero.");
+        assertNonNegative(length, "length", "length cannot be less than zero.");
 
         int endIndex = startIndex + length;
         if (endIndex > strLen)
-            throw new ArgumentOutOfRangeException("length", "Index and length must refer to a location within the string.");
+            ArgumentOutOfRangeException._throw("length", "Index and length must refer to a location within the string.");
 
         if (length == 0)
             return empty;
@@ -950,13 +942,10 @@ public final class StringHelper {
         assertNonNull(s, "s");
         assertNonNull(oldValue, "oldValue");
 
-        if (empty.equals(oldValue))
-            throw new ArgumentException("String cannot be of zero length.", "oldValue");
+        if (oldValue.length() == 0)
+            ArgumentException._throw("String cannot be of zero length.", "oldValue");
 
-        if (newValue == null)
-            newValue = empty;
-
-        return s.replace(oldValue, newValue);
+        return s.replace(oldValue, nullToEmpty(newValue));
     }
 
     /**
@@ -1064,5 +1053,10 @@ public final class StringHelper {
     @Nonnull
     static String nullToEmpty(@Nullable String s) {
         return s == null ? empty : s;
+    }
+
+    @Nonnull
+    static String nullToEmpty(@Nullable Object o) {
+        return o == null ? empty : o.toString();
     }
 }

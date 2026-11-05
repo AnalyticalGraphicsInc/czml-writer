@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.ArgumentOutOfRangeException.assertNonNegative;
 import static java.lang.Byte.toUnsignedInt;
 import static java.lang.Byte.toUnsignedLong;
 import static java.nio.charset.StandardCharsets.US_ASCII;
@@ -42,7 +43,7 @@ public final class ConvertHelper {
 
     public static int toInt32(long value) {
         if (value < Integer.MIN_VALUE || value > Integer.MAX_VALUE)
-            throw new RuntimeException("Overflow");
+            ArgumentOutOfRangeException._throw();
 
         return (int) value;
     }
@@ -59,7 +60,7 @@ public final class ConvertHelper {
         double rounded = Math.rint(value);
 
         if (rounded < Integer.MIN_VALUE || rounded > Integer.MAX_VALUE)
-            throw new RuntimeException("Overflow");
+            ArgumentOutOfRangeException._throw();
 
         return (int) rounded;
     }
@@ -120,7 +121,7 @@ public final class ConvertHelper {
         double rounded = Math.rint(value);
 
         if (rounded < Long.MIN_VALUE || rounded > Long.MAX_VALUE)
-            throw new RuntimeException("Overflow");
+            ArgumentOutOfRangeException._throw();
 
         return (long) rounded;
     }
@@ -279,12 +280,9 @@ public final class ConvertHelper {
     @Nonnull
     public static String toBase64String(@Nonnull byte[] inArray, int offset, int length) {
         assertNonNull(inArray, "inArray");
-        if (length < 0)
-            throw new ArgumentOutOfRangeException("length");
-        if (offset < 0)
-            throw new ArgumentOutOfRangeException("offset");
-        if (offset > inArray.length - length)
-            throw new ArgumentOutOfRangeException("offset");
+        assertNonNegative(length, "length");
+        if (offset < 0 || offset > inArray.length - length)
+            ArgumentOutOfRangeException._throw("offset");
 
         return new String(Base64.getEncoder().encode(ByteBuffer.wrap(inArray, offset, length)).array(), US_ASCII);
     }

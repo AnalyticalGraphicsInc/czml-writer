@@ -449,7 +449,7 @@ public final class DateTimeFormatInfo {
         case 1:
             return "A.D.";
         default:
-            throw new ArgumentException("Unknown era");
+            return ArgumentException._throw("Unknown era", "era");
         }
     }
 

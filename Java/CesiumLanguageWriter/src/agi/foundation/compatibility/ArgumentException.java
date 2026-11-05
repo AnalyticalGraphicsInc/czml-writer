@@ -2,19 +2,23 @@ package agi.foundation.compatibility;
 
 import static java.lang.System.lineSeparator;
 
+import javax.annotation.Nonnull;
+
 /**
  * The exception that is thrown when one of the arguments provided to a method is not
  * valid.
  */
 public class ArgumentException extends IllegalArgumentException {
     private static final long serialVersionUID = -5541530755505468417L;
+    @Nonnull
+    private static final String DEFAULT_MESSAGE = "Value does not fall within the expected range.";
     private final String paramName;
 
     /**
      * Initializes a new instance.
      */
     public ArgumentException() {
-        super("Value does not fall within the expected range.");
+        super(DEFAULT_MESSAGE);
         paramName = null;
     }
 
@@ -89,5 +93,44 @@ public class ArgumentException extends IllegalArgumentException {
      */
     public String getParamName() {
         return paramName;
+    }
+
+    static void assertValidSubset(int size, int index, int count) {
+        if (size - index < count) {
+            final String message = "Offset and length were out of bounds for the array or count is greater than the number of elements from index to the end of the source collection.";
+            _throw(message);
+        }
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentException}.
+     */
+    @Nonnull
+    public static <T> T _throw() {
+        throw new ArgumentException();
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentException}.
+     *
+     * @param message
+     *            The error message that explains the reason for the exception.
+     */
+    @Nonnull
+    public static <T> T _throw(String message) {
+        throw new ArgumentException(message);
+    }
+
+    /**
+     * Throw a new instance of {@link ArgumentException}.
+     *
+     * @param message
+     *            The error message that explains the reason for the exception.
+     * @param paramName
+     *            The name of the parameter that caused the current exception.
+     */
+    @Nonnull
+    public static <T> T _throw(String message, String paramName) {
+        throw new ArgumentException(message, paramName);
     }
 }

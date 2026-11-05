@@ -1,0 +1,145 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/GroundElevationVolume.json",
+    "title": "GroundElevationVolume",
+    "description": "A volume defined by maximum and minimum ground elevation angles, clock angles, and radial limits.",
+    "type": "object",
+    "czmlExtensionPrefix": "agi",
+    "properties": {
+        "show": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the entire volume is shown.",
+            "default": true
+        },
+        "minimumGroundElevationAngle": {
+            "$ref": "../../Double.json",
+            "description": "The minimum ground elevation angle of the volume.",
+            "default": 0.0
+        },
+        "maximumGroundElevationAngle": {
+            "$ref": "../../Double.json",
+            "description": "The maximum ground elevation angle of the volume.",
+            "default": "π"
+        },
+        "minimumClockAngle": {
+            "$ref": "../../Double.json",
+            "description": "The minimum clock angle limit of the volume.",
+            "default": 0.0
+        },
+        "maximumClockAngle": {
+            "$ref": "../../Double.json",
+            "description": "The maximum clock angle limit of the volume.",
+            "default": "2π"
+        },
+        "minimumRadius": {
+            "$ref": "../../Double.json",
+            "description": "The minimum radial limit of the volume.",
+            "default": 0.0
+        },
+        "maximumRadius": {
+            "$ref": "../../Double.json",
+            "description": "The maximum radial limit of the volume.",
+            "default": "Infinity"
+        },
+        "showIntersection": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the intersection of the volume with the Earth is shown.",
+            "default": true
+        },
+        "intersectionColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the intersection of the volume with the Earth.",
+            "default": "white"
+        },
+        "intersectionWidth": {
+            "$ref": "../../Double.json",
+            "description": "The width of the intersection in pixels.",
+            "default": 1.0
+        },
+        "showLateralSurfaces": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the lateral surfaces, i.e., the outer sides of the volume, are shown.",
+            "default": true
+        },
+        "lateralSurfaceMaterial": {
+            "$ref": "../../Material.json",
+            "description": "The material to use for the volume's lateral surface, i.e., the outer sides of the volume.",
+            "default": "solid white"
+        },
+        "showEllipsoidSurfaces": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not ellipsoid surfaces are shown.",
+            "default": true
+        },
+        "ellipsoidSurfaceMaterial": {
+            "$ref": "../../Material.json",
+            "description": "The material to use for the volume's ellipsoid surfaces.",
+            "default": "solid white"
+        },
+        "showDomeSurfaces": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not dome surfaces are shown.",
+            "default": true
+        },
+        "domeSurfaceMaterial": {
+            "$ref": "../../Material.json",
+            "description": "The material to use for the volume's dome surfaces.",
+            "default": "solid white"
+        },
+        "environmentConstraint": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the volume will be occluded by objects in the current view of the environment, e.g. visible terrain or models.",
+            "default": false
+        },
+        "showEnvironmentOcclusion": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the portion of the volume occluded by the environment will be drawn with the environmentOcclusionMaterial.",
+            "default": false
+        },
+        "environmentOcclusionMaterial": {
+            "$ref": "../../Material.json",
+            "description": "The material to use for the portion of the volume occluded by the environment.",
+            "default": "solid white"
+        },
+        "showEnvironmentIntersection": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not a line showing where the volume intersects the environment will be drawn.",
+            "default": false
+        },
+        "environmentIntersectionColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the intersection line between the volume and the environment.",
+            "default": "white"
+        },
+        "environmentIntersectionWidth": {
+            "$ref": "../../Double.json",
+            "description": "The width in meters of the intersection line between the volume and the environment.",
+            "default": 5.0
+        },
+        "showThroughEllipsoid": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not a volume intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side.",
+            "default": false
+        },
+        "showViewshed": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the viewshed of the volume will be drawn.",
+            "default": false
+        },
+        "viewshedVisibleColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the scene geometry that is visible to the volume.",
+            "default": "lime, 50% transparent"
+        },
+        "viewshedOccludedColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the scene geometry that is not visible to the volume.",
+            "default": "red, 50% transparent"
+        },
+        "viewshedResolution": {
+            "$ref": "../../Integer.json",
+            "description": "The resolution in pixels of the viewshed.",
+            "default": 2048
+        }
+    }
+}

@@ -153,83 +153,96 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
 
                         foreach (var property in schemaProperties)
                         {
-                            string propertyName = GetPropertyName(property, out bool isExtension);
+                            writer.WriteLine("WriteConstantValues{0}(packet);", property.NameWithPascalCase);
+                        }
+                    }
 
-                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                            using (writer.OpenScope())
+                    writer.WriteLine("WriteConstantValuesIndividual();");
+                    writer.WriteLine("WriteConstantValuesCustomProperties();");
+                }
+
+                foreach (var property in schemaProperties)
+                {
+                    writer.WriteLine("private void WriteConstantValues{0}(PacketCesiumWriter packet)", property.NameWithPascalCase);
+                    using (writer.OpenScope())
+                    {
+                        const string id = "Constant";
+                        string propertyName = GetPropertyName(property, out bool isExtension);
+
+                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                        using (writer.OpenScope())
+                        {
+                            var properties = property.ValueType.Properties;
+
+                            if (properties.FirstOrDefault(p => p.IsValue) is { } firstValueProperty)
                             {
-                                var properties = property.ValueType.Properties;
-
-                                if (properties.FirstOrDefault(p => p.IsValue) is { } firstValueProperty)
+                                WriteValue(writer, "w", id, firstValueProperty, property, isExtension, propertyName);
+                            }
+                            else
+                            {
+                                foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
                                 {
-                                    WriteValue(writer, "w", id, firstValueProperty, property, isExtension, propertyName);
-                                }
-                                else
-                                {
-                                    foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
+                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                    using (writer.OpenScope())
                                     {
-                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                        using (writer.OpenScope())
+                                        properties = subProperty.ValueType.Properties;
+                                        firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+
+                                        string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                        if (firstValueProperty != null)
                                         {
-                                            properties = subProperty.ValueType.Properties;
-                                            firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-
-                                            string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-
-                                            if (firstValueProperty != null)
+                                            WriteValue(writer, "w2", id + property.Name, firstValueProperty, subProperty, isExtension, $"{propertyName}.{subPropertyName}");
+                                        }
+                                        else if (subProperty.ValueType.Name.Contains("Material"))
+                                        {
+                                            var materialProperty = properties.First();
+                                            writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                            using (writer.OpenScope())
                                             {
-                                                WriteValue(writer, "w2", id + property.Name, firstValueProperty, subProperty, isExtension, $"{propertyName}.{subPropertyName}");
-                                            }
-                                            else if (subProperty.ValueType.Name.Contains("Material"))
-                                            {
-                                                var materialProperty = properties.First();
-                                                writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                                using (writer.OpenScope())
+                                                properties = materialProperty.ValueType.Properties;
+                                                foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                                 {
-                                                    properties = materialProperty.ValueType.Properties;
-                                                    foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                    writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
                                                     {
-                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                        using (writer.OpenScope())
+                                                        properties = materialSubProperty.ValueType.Properties;
+                                                        firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                        if (firstValueProperty != null)
                                                         {
-                                                            properties = materialSubProperty.ValueType.Properties;
-                                                            firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                                            if (firstValueProperty != null)
-                                                            {
-                                                                WriteValue(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
-                                                            }
+                                                            WriteValue(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
                                                         }
                                                     }
                                                 }
                                             }
-                                            else if (subProperty.ValueType.AdditionalProperties is { } additionalProperties)
+                                        }
+                                        else if (subProperty.ValueType.AdditionalProperties is { } additionalProperties)
+                                        {
+                                            writer.WriteLine("using (var a = w2.Open{0}Property(\"prop\"))", additionalProperties.ValueType.NameWithPascalCase);
+                                            using (writer.OpenScope())
                                             {
-                                                writer.WriteLine("using (var a = w2.Open{0}Property(\"prop\"))", additionalProperties.ValueType.NameWithPascalCase);
-                                                using (writer.OpenScope())
+                                                var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
+                                                foreach (var additionalSubProperty in additionalSubProperties)
                                                 {
-                                                    var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
-                                                    foreach (var additionalSubProperty in additionalSubProperties)
+                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
                                                     {
-                                                        writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
-                                                        using (writer.OpenScope())
-                                                        {
-                                                            properties = additionalSubProperty.ValueType.Properties;
-                                                            firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                                            if (firstValueProperty != null)
-                                                            {
-                                                                WriteValue(writer, "w3", id + property.Name, firstValueProperty, additionalSubProperty, isExtension, $"{propertyName}.{subPropertyName}.prop.{additionalSubProperty.Name}");
-                                                            }
-                                                        }
-                                                    }
-
-                                                    if (additionalSubProperties is [])
-                                                    {
-                                                        properties = additionalProperties.ValueType.Properties;
+                                                        properties = additionalSubProperty.ValueType.Properties;
                                                         firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
                                                         if (firstValueProperty != null)
                                                         {
-                                                            WriteValue(writer, "a", id + property.Name, firstValueProperty, additionalProperties, isExtension, $"{propertyName}.{subPropertyName}.prop");
+                                                            WriteValue(writer, "w3", id + property.Name, firstValueProperty, additionalSubProperty, isExtension, $"{propertyName}.{subPropertyName}.prop.{additionalSubProperty.Name}");
                                                         }
+                                                    }
+                                                }
+
+                                                if (additionalSubProperties is [])
+                                                {
+                                                    properties = additionalProperties.ValueType.Properties;
+                                                    firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                    if (firstValueProperty != null)
+                                                    {
+                                                        WriteValue(writer, "a", id + property.Name, firstValueProperty, additionalProperties, isExtension, $"{propertyName}.{subPropertyName}.prop");
                                                     }
                                                 }
                                             }
@@ -239,9 +252,6 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
                             }
                         }
                     }
-
-                    writer.WriteLine("WriteConstantValuesIndividual();");
-                    writer.WriteLine("WriteConstantValuesCustomProperties();");
                 }
 
                 writer.WriteLine("private void WriteConstantValuesIndividual()");
@@ -524,124 +534,135 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
 
                         foreach (var property in schemaProperties)
                         {
-                            string propertyName = GetPropertyName(property, out bool isExtension);
+                            writer.WriteLine("WriteReferenceValues{0}(packet);", property.NameWithPascalCase);
+                        }
+                    }
 
-                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                            using (writer.OpenScope())
+                    writer.WriteLine("WriteReferenceValuesIndividual();");
+                }
+
+                foreach (var property in schemaProperties)
+                {
+                    writer.WriteLine("private void WriteReferenceValues{0}(PacketCesiumWriter packet)", property.NameWithPascalCase);
+                    using (writer.OpenScope())
+                    {
+                        string propertyName = GetPropertyName(property, out bool isExtension);
+
+                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                        using (writer.OpenScope())
+                        {
+                            var properties = property.ValueType.Properties;
+                            if (properties.Any(p => p.ValueType.Name == "Reference"))
                             {
-                                var properties = property.ValueType.Properties;
-                                if (properties.Any(p => p.ValueType.Name == "Reference"))
+                                writer.WriteLine("w.WriteReference(new Reference(\"Constant\", \"{0}\"));", propertyName);
+                                WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date)).toEqual(constant.{0}.getValue(date));", propertyName);
+                            }
+                            else
+                            {
+                                foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
                                 {
-                                    writer.WriteLine("w.WriteReference(new Reference(\"Constant\", \"{0}\"));", propertyName);
-                                    WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date)).toEqual(constant.{0}.getValue(date));", propertyName);
-                                }
-                                else
-                                {
-                                    foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
+                                    properties = subProperty.ValueType.Properties;
+
+                                    string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                    if (properties.Any(p => p.ValueType.Name == "Reference"))
                                     {
-                                        properties = subProperty.ValueType.Properties;
-
-                                        string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-
-                                        if (properties.Any(p => p.ValueType.Name == "Reference"))
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
                                         {
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            using (writer.OpenScope())
-                                            {
-                                                writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\")));", propertyName, subPropertyName);
-                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual(constant.{0}.{1}.getValue(date));", propertyName, subPropertyName);
-                                            }
+                                            writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\")));", propertyName, subPropertyName);
+                                            WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual(constant.{0}.{1}.getValue(date));", propertyName, subPropertyName);
                                         }
-                                        else if (properties.Any(p => p.ValueType.Name == "ReferenceList"))
+                                    }
+                                    else if (properties.Any(p => p.ValueType.Name == "ReferenceList"))
+                                    {
+                                        string targetId = "";
+                                        string[] referencePropertyNames = [];
+                                        if (subProperty.ValueType.Name == "PositionList")
                                         {
-                                            string targetId = "";
-                                            string[] referencePropertyNames = [];
-                                            if (subProperty.ValueType.Name == "PositionList")
-                                            {
-                                                targetId = "Position";
-                                                referencePropertyNames = ["position"];
-                                            }
-                                            else if (subProperty.ValueType.Name == "DoubleList")
-                                            {
-                                                targetId = "Double";
-                                                referencePropertyNames = ["billboard", "scale"];
-                                            }
-                                            string valueSuffix = "";
-                                            if (propertyName == "polygon" && subProperty.Name == "positions")
-                                            {
-                                                valueSuffix = ".positions";
-                                            }
-
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            using (writer.OpenScope())
-                                            {
-                                                writer.WriteLine("w2.WriteReferences(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1}))));", targetId, referencePropertyNames.Select(n => $"\"{n}\"").Join(", "));
-                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date)]);", propertyName, subPropertyName, targetId, referencePropertyNames.Join("."), valueSuffix);
-                                            }
+                                            targetId = "Position";
+                                            referencePropertyNames = ["position"];
                                         }
-                                        else if (properties.Any(p => p.ValueType.Name == "ReferenceListOfLists"))
+                                        else if (subProperty.ValueType.Name == "DoubleList")
                                         {
-                                            string targetId = "";
-                                            string[] referencePropertyNames = [];
-                                            if (subProperty.ValueType.Name == "PositionListOfLists")
-                                            {
-                                                targetId = "Position";
-                                                referencePropertyNames = ["position"];
-                                            }
-                                            string valueSuffix = "";
-                                            if (propertyName == "polygon" && subProperty.Name == "holes")
-                                            {
-                                                valueSuffix = ".holes";
-                                            }
-
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            using (writer.OpenScope())
-                                            {
-                                                writer.WriteLine("w2.WriteReferences(CreateList(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1})), new Reference(\"Constant{0}3\", CreateList({1})))));", targetId, referencePropertyNames.Select(n => $"\"{n}\"").Join(", "));
-                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([ new PolygonHierarchy([ dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date), dataSource.entities.getById('Constant{2}3').{3}.getValue(date) ])]);", propertyName, subPropertyName, targetId, referencePropertyNames.Join("."), valueSuffix);
-                                            }
+                                            targetId = "Double";
+                                            referencePropertyNames = ["billboard", "scale"];
                                         }
-                                        else if (subProperty.ValueType.Name.Contains("Material"))
+                                        string valueSuffix = "";
+                                        if (propertyName == "polygon" && subProperty.Name == "positions")
                                         {
-                                            Property materialProperty = properties.First();
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                            using (writer.OpenScope())
+                                            valueSuffix = ".positions";
+                                        }
+
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            writer.WriteLine("w2.WriteReferences(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1}))));", targetId, referencePropertyNames.Select(n => $"\"{n}\"").Join(", "));
+                                            WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date)]);", propertyName, subPropertyName, targetId, referencePropertyNames.Join("."), valueSuffix);
+                                        }
+                                    }
+                                    else if (properties.Any(p => p.ValueType.Name == "ReferenceListOfLists"))
+                                    {
+                                        string targetId = "";
+                                        string[] referencePropertyNames = [];
+                                        if (subProperty.ValueType.Name == "PositionListOfLists")
+                                        {
+                                            targetId = "Position";
+                                            referencePropertyNames = ["position"];
+                                        }
+                                        string valueSuffix = "";
+                                        if (propertyName == "polygon" && subProperty.Name == "holes")
+                                        {
+                                            valueSuffix = ".holes";
+                                        }
+
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            writer.WriteLine("w2.WriteReferences(CreateList(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1})), new Reference(\"Constant{0}3\", CreateList({1})))));", targetId, referencePropertyNames.Select(n => $"\"{n}\"").Join(", "));
+                                            WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([ new PolygonHierarchy([ dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date), dataSource.entities.getById('Constant{2}3').{3}.getValue(date) ])]);", propertyName, subPropertyName, targetId, referencePropertyNames.Join("."), valueSuffix);
+                                        }
+                                    }
+                                    else if (subProperty.ValueType.Name.Contains("Material"))
+                                    {
+                                        Property materialProperty = properties.First();
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            properties = materialProperty.ValueType.Properties;
+                                            foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                             {
-                                                properties = materialProperty.ValueType.Properties;
-                                                foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                using (writer.OpenScope())
                                                 {
-                                                    writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                    using (writer.OpenScope())
-                                                    {
-                                                        writer.WriteLine("m2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"{2}\")));", propertyName, subPropertyName, materialSubProperty.Name);
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.{2}.getValue(date)).toEqual(constant.{0}.{1}.{2}.getValue(date));", propertyName, subPropertyName, materialSubProperty.Name);
-                                                    }
+                                                    writer.WriteLine("m2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"{2}\")));", propertyName, subPropertyName, materialSubProperty.Name);
+                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.{2}.getValue(date)).toEqual(constant.{0}.{1}.{2}.getValue(date));", propertyName, subPropertyName, materialSubProperty.Name);
                                                 }
                                             }
                                         }
-                                        else if (subProperty.ValueType.AdditionalProperties is { } additionalProperties)
+                                    }
+                                    else if (subProperty.ValueType.AdditionalProperties is { } additionalProperties)
+                                    {
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        writer.WriteLine("using (var a = w2.Open{0}Property(\"referenceProp\"))", additionalProperties.ValueType.NameWithPascalCase);
+                                        using (writer.OpenScope())
                                         {
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            writer.WriteLine("using (var a = w2.Open{0}Property(\"referenceProp\"))", additionalProperties.ValueType.NameWithPascalCase);
-                                            using (writer.OpenScope())
+                                            var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
+                                            foreach (var additionalSubProperty in additionalSubProperties)
                                             {
-                                                var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
-                                                foreach (var additionalSubProperty in additionalSubProperties)
+                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
+                                                using (writer.OpenScope())
                                                 {
-                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
-                                                    using (writer.OpenScope())
-                                                    {
-                                                        writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\", \"{2}\")));", propertyName, subPropertyName, additionalSubProperty.Name);
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalSubProperty.Name);
-                                                    }
+                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\", \"{2}\")));", propertyName, subPropertyName, additionalSubProperty.Name);
+                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalSubProperty.Name);
                                                 }
+                                            }
 
-                                                if (additionalSubProperties is [])
-                                                {
-                                                    writer.WriteLine("a.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\")));", propertyName, subPropertyName);
-                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.getValue(date)).toEqual(constant.{0}.{1}.prop.getValue(date));", propertyName, subPropertyName);
-                                                }
+                                            if (additionalSubProperties is [])
+                                            {
+                                                writer.WriteLine("a.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\")));", propertyName, subPropertyName);
+                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.getValue(date)).toEqual(constant.{0}.{1}.prop.getValue(date));", propertyName, subPropertyName);
                                             }
                                         }
                                     }
@@ -649,8 +670,6 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
                             }
                         }
                     }
-
-                    writer.WriteLine("WriteReferenceValuesIndividual();");
                 }
 
                 writer.WriteLine("private void WriteReferenceValuesIndividual()");
@@ -805,55 +824,68 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
 
                         foreach (var property in schemaProperties)
                         {
-                            string propertyName = GetPropertyName(property, out bool isExtension);
+                            writer.WriteLine("WriteSampledValues{0}(packet);", property.NameWithPascalCase);
+                        }
+                    }
 
-                            var properties = property.ValueType.Properties;
-                            if (property.IsInterpolatable)
+                    writer.WriteLine("WriteSampledValuesIndividual();");
+                    writer.WriteLine("WriteSampledValuesCustomProperties();");
+                }
+
+                foreach (var property in schemaProperties)
+                {
+                    writer.WriteLine("private void WriteSampledValues{0}(PacketCesiumWriter packet)", property.NameWithPascalCase);
+                    using (writer.OpenScope())
+                    {
+                        const string id = "Sampled";
+                        string propertyName = GetPropertyName(property, out bool isExtension);
+
+                        var properties = property.ValueType.Properties;
+                        if (property.IsInterpolatable)
+                        {
+                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                            using (writer.OpenScope())
+                            {
+                                var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
+                                WriteValues(writer, "w", id, firstValueProperty, property, isExtension, propertyName);
+                            }
+                        }
+                        else
+                        {
+                            var subProperties = properties.Where(p => !p.IsValue && (p.IsInterpolatable || p.ValueType.Name.Contains("Material"))).ToList();
+                            if (subProperties is { Count: > 0 })
                             {
                                 writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                 using (writer.OpenScope())
                                 {
-                                    var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
-                                    WriteValues(writer, "w", id, firstValueProperty, property, isExtension, propertyName);
-                                }
-                            }
-                            else
-                            {
-                                var subProperties = properties.Where(p => !p.IsValue && (p.IsInterpolatable || p.ValueType.Name.Contains("Material"))).ToList();
-                                if (subProperties is { Count: > 0 })
-                                {
-                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                    using (writer.OpenScope())
+                                    foreach (var subProperty in subProperties)
                                     {
-                                        foreach (var subProperty in subProperties)
-                                        {
-                                            properties = subProperty.ValueType.Properties;
+                                        properties = subProperty.ValueType.Properties;
 
-                                            string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                            using (writer.OpenScope())
+                                        string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            if (subProperty.IsInterpolatable)
                                             {
-                                                if (subProperty.IsInterpolatable)
+                                                var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
+                                                WriteValues(writer, "w2", id + property.Name, firstValueProperty, subProperty, isExtension, $"{propertyName}.{subPropertyName}");
+                                            }
+                                            else if (subProperty.ValueType.Name.Contains("Material"))
+                                            {
+                                                Property materialProperty = properties.First();
+                                                writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                using (writer.OpenScope())
                                                 {
-                                                    var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
-                                                    WriteValues(writer, "w2", id + property.Name, firstValueProperty, subProperty, isExtension, $"{propertyName}.{subPropertyName}");
-                                                }
-                                                else if (subProperty.ValueType.Name.Contains("Material"))
-                                                {
-                                                    Property materialProperty = properties.First();
-                                                    writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                                    using (writer.OpenScope())
+                                                    properties = materialProperty.ValueType.Properties;
+                                                    foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
                                                     {
-                                                        properties = materialProperty.ValueType.Properties;
-                                                        foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
+                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                        using (writer.OpenScope())
                                                         {
-                                                            writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                            using (writer.OpenScope())
-                                                            {
-                                                                properties = materialSubProperty.ValueType.Properties;
-                                                                var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
-                                                                WriteValues(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
-                                                            }
+                                                            properties = materialSubProperty.ValueType.Properties;
+                                                            var firstValueProperty = properties.First(p => p is { IsValue: true, ValueType.IsArray: true });
+                                                            WriteValues(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
                                                         }
                                                     }
                                                 }
@@ -864,9 +896,6 @@ public class ValidationDocumentGenerator(string? outputDirectory) : Generator(ou
                             }
                         }
                     }
-
-                    writer.WriteLine("WriteSampledValuesIndividual();");
-                    writer.WriteLine("WriteSampledValuesCustomProperties();");
                 }
 
                 writer.WriteLine("private void WriteSampledValuesIndividual()");

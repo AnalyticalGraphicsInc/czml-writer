@@ -1,7 +1,10 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 public class NotFiniteNumberException extends ArithmeticException {
     private static final long serialVersionUID = -2306307019873202030L;
+    @Nonnull
     private static final String DEFAULT_MESSAGE = "Number encountered was not a finite quantity.";
     private double offendingNumber;
 

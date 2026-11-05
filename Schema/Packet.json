@@ -139,6 +139,10 @@
             "$ref": "Extensions/AGI/RectangularSensor.json",
             "description": "A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the `position` and `orientation` properties."
         },
+        "agi_groundElevationVolume": {
+            "$ref": "Extensions/AGI/GroundElevationVolume.json",
+            "description": "A volume defined by maximum and minimum ground elevation angles."
+        },
         "agi_fan": {
             "$ref": "Extensions/AGI/Fan.json",
             "description": "Defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius. The fan is positioned and oriented using the `position` and `orientation` properties."
