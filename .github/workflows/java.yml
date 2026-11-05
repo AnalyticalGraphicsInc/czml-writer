@@ -14,10 +14,12 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Set up JDK
+    - name: Set up JDKs
       uses: actions/setup-java@v5
       with:
-        java-version: '17'
+        java-version: |
+          8
+          17
         distribution: 'temurin'
 
     - name: Install GitVersion
